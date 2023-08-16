@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoCarouseView.MainPage"
+             xmlns:local="clr-namespace:DemoCarouseView"
+             x:DataType="local:MainPageViewModel">
+
+
+    <VerticalStackLayout>
+        <Grid RowDefinitions="*">
+            <CarouselView ItemsSource="{Binding CarouselItems}" IndicatorView="indicatorView" Loop="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="local:CarouselItem">
+                        <Grid RowDefinitions=".60*,.40*" RowSpacing="40">
+                            <Image Source="{Binding Image}" WidthRequest="250" HeightRequest="350" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"></Image>
+                            <VerticalStackLayout Grid.Row="1" Spacing="10" Margin="0,50,0,0">
+                                <Label Text="{Binding Title}" FontSize="Title"></Label>
+                                <Label Text="{Binding Description}" FontSize="Default"></Label>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+
+        <IndicatorView x:Name="indicatorView" VerticalOptions="CenterAndExpand" IndicatorColor="Brown" IndicatorSize="12" SelectedIndicatorColor="Green"></IndicatorView>
+
+        <Button Text="Next" WidthRequest="100"  HorizontalOptions="End"  Margin="10,150,10,0"></Button>
+    </VerticalStackLayout>
+
+
+</ContentPage>
